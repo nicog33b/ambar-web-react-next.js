@@ -1,7 +1,11 @@
-'use client';
-import React, { useState } from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import DressCard from '../../components/collection/dressCard';
-import Filters from '../../components/collection/dressFilter';
+import FiltroAside from '@/components/collection/filtroAside';
+import MobileFilterOverlay from '@/components/collection/filtroMobile';
+
+import { FaFilter } from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 
 const RentalsPage = () => {
   // Aquí iría la lógica para obtener los datos de los vestidos, por ejemplo:
@@ -17,6 +21,8 @@ const RentalsPage = () => {
 
   // Estado para los vestidos filtrados
   const [filteredDresses, setFilteredDresses] = useState(dresses);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
 
   // Función para aplicar los filtros
   const applyFilters = (category, size) => {
@@ -30,16 +36,33 @@ const RentalsPage = () => {
     setFilteredDresses(filtered);
   };
 
+  const handleMobileFilterToggle = () => {
+    setIsMobileFilterOpen(!isMobileFilterOpen);
+  };
+
   return (
     <div className="mt-9 mr-3 ml-3">
-      {/* Filtros en dispositivos móviles */}
-      <div className="sm:hidden">
-        <Filters applyFilters={applyFilters} />
-      </div>
+      {/* Botón de activación del filtro móvil */}
+
+      <button onClick={handleMobileFilterToggle} className="block sm:hidden bg-white text-pink-300 py-2 px-4 rounded mb-4">
+  {isMobileFilterOpen ? (
+    <span className='' style={{ display: 'flex', alignItems: 'center' }}>
+      <p className='font-serif text-2xl mr-2'>Filtrar</p> <FaTimesCircle />
+    </span>
+  ) : (
+    <span style={{ display: 'flex', alignItems: 'center' }}>
+      <p className='font-serif text-2xl mr-2'>Filtrar</p> <FaFilter />
+    </span>
+  )}
+</button>
+
+
+      {/* Filtro en dispositivos móviles */}
+      {isMobileFilterOpen && <MobileFilterOverlay isOpen={isMobileFilterOpen} onClose={handleMobileFilterToggle} />}
       <div className="flex flex-col sm:flex-row">
         {/* Columna de filtros en dispositivos de escritorio */}
         <div className="lg:w-1/4 mr-4 hidden sm:block">
-          <Filters applyFilters={applyFilters} />
+          <FiltroAside></FiltroAside>
         </div>
         {/* Grid de productos */}
         <div className="flex-grow">
