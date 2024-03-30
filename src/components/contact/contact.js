@@ -16,7 +16,7 @@ const ContactSection = () => {
       };
 
   return (
-    <section className="text-gray-600 body-font relative bg-pink-100">
+    <section id='contactSection' className="text-gray-600 body-font relative bg-pink-100">
       <div className="container px-5 py-8 mx-auto flex sm:flex-nowrap flex-wrap  rounded-sm bg-pink-100">
         <div className="lg:w-2/3 md:w-1/2  rounded-lg overflow-hidden sm:mr-10 p-4 md:p-10 flex items-end justify-start relative bg-pink-100">
           <iframe
@@ -69,7 +69,7 @@ const ContactSection = () => {
               className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
           </div>
-          <button className="text-white font-bold bg-pink-300 border-0 py-4 px-8 focus:outline-none hover:bg-blue-500 rounded text-lg hover:text-pink-300 hover:font-extrabold">Button</button>
+          <button className="text-white font-bold bg-pink-300 border-0 py-4 px-8 focus:outline-none hover:bg-blue-500 rounded text-lg hover:text-pink-300 hover:font-extrabold">Envíar</button>
           <p className="text-xs text-gray-500 mt-3">Tus datos seran usados exclusivamente para comunicarnos contigo.</p>
         </div>
       </div>
