@@ -33,7 +33,7 @@ const CategoryOption = ({ optionName, subcategories }) => {
         onClick={optionName === 'PRECIOS' ? togglePriceFilter : toggleSubcategories}
       >
         {optionName}
-        <span className="ml-3 hover:text-green-500">
+        <span className="ml-3 hover:text-gray-400">
           {optionName === 'PRECIOS' ? (showPriceFilter ? <SlArrowUp /> : <SlArrowDown />) : (showSubcategories ? <SlArrowUp /> : <SlArrowDown />)}
         </span>
       </p>

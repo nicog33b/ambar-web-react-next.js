@@ -13,9 +13,6 @@ export default function Home() {
 
       <ServicesSection></ServicesSection>
 
-      <SeeAllDress></SeeAllDress>
-
-      <ContactSection></ContactSection>
       
     </div>
   );

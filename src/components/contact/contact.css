@@ -1,0 +1,14 @@
+/* Mejoras específicas para efectos visuales que Tailwind no cubre completamente o para preferencias específicas de diseño */
+iframe {
+    filter: grayscale(1) contrast(1.2) opacity(0.8);
+  }
+  
+  input:focus, textarea:focus {
+    border-color: #ef4444; /* Rojo de Tailwind para el foco */
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5); /* Sombra suave para resaltar el foco */
+  }
+  
+  button:hover {
+    background-color: #ec4899; /* Un tono más oscuro para el hover */
+  }
+  

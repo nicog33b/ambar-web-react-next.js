@@ -3,7 +3,7 @@ import Navbar from '@/components/ui/navbar'
 import './globals.css'
 import Footer from '@/components/ui/footer'
 import NavbarMain from './../components/ui/navbarMain';
-import NavbarOptions from '@/components/ui/navbarOptions';
+
 
 
 
@@ -18,9 +18,8 @@ export default function RootLayout({ children }) {
      <body className=" ">
 
 
-  
+        <Navbar></Navbar>
         <NavbarMain></NavbarMain>
-        <NavbarOptions></NavbarOptions>
         {children}
         <Footer></Footer>
 

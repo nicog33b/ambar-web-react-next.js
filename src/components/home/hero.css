@@ -1,0 +1,70 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 51rem;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .text-container {
+    text-align: center;
+    color: white;
+    max-width: 640px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar el contraste */
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-family: 'Wulkan Display', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra de texto para mejorar la legibilidad */
+    margin-bottom: 1rem;
+    animation: slideInFromLeft 1s ease-out;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .cta-button {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: black;
+    color: #f472b6; /* Un toque de color en el hover para atraer atención */
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

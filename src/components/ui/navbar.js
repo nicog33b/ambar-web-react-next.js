@@ -1,33 +1,33 @@
 import React from 'react';
-import { BsInstagram, BsWhatsapp } from 'react-icons/bs';
+import { BsInstagram, BsWhatsapp, BsTelephoneInbound } from 'react-icons/bs';
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
-import { BsTelephoneInbound } from "react-icons/bs";
 
 const Navbar = () => {
   return (
-    <div className='flex bg-gradient-to-br from-gray-200 to-pink-300 justify-between items-center p-2 '>
-   <div className='flex items-center space-x-2 text-black '>
-         <div className='hover:text-gray-400 flex ml-6 mr-6 cursor-pointer duration-1000'>
-        <IoLocationOutline className='h-4 w-4 text-xl font-bold rounded ' />
-        <p className='text-sm font-bold'>Pando</p>
+    <div className='flex bg-gradient-to-br  from-pink-200 to-violet-300 justify-between items-center px-4 py-2'>
+
+      {/* Contact Info */}
+      <div className='flex items-center space-x-4 text-white'>
+        <div className='flex items-center space-x-2 hover:text-gray-300 cursor-pointer transition duration-300'>
+          <IoLocationOutline className='text-2xl ' />
+          
         </div>
-        <div className='hover:text-gray-400 flex cursor-pointer duration-1000'>
-        <AiOutlineMail className='h-4 w-4 text-xl font-bold rounded'/>
-        <p className='text-sm font-bold'>ambar@gmail.com</p>
-</div>
+        <div className='flex items-center space-x-2 hover:text-gray-300 cursor-pointer transition duration-300'>
+          <AiOutlineMail className='text-2xl  bg-transparent'/>
+
+        </div>
+        <div className='flex items-center space-x-2 hover:text-gray-300 cursor-pointer transition duration-300'>
+          <BsTelephoneInbound className='text-2xl  bg-transparent' />
+    
+        </div>
       </div>
 
-      <div className='flex items-center space-x-4 text-gray-300'>
-
-        <div className='flex items-center space-x-2 mr-6'>
-          <BsInstagram className='h-4 w-4 text-black hover:text-gray-400 cursor-pointer duration-1000' />
-          <BsWhatsapp className='h-4 w-4 text-black hover:text-gray-400 cursor-pointer duration-1000' />
-        </div>
-
+      {/* Social Media Icons */}
+      <div className='flex items-center space-x-4 text-white  cursor-pointer transition duration-300'>
+        <BsInstagram className='text-2xl  hover:text-gray-300' />
+        <BsWhatsapp className='text-2xl  hover:text-gray-300' />
       </div>
-
-   
     </div>
   );
 };
