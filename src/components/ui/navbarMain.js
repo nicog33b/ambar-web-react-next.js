@@ -61,7 +61,7 @@ const Navbar = () => {
 
 
           <hr className="my-2 border-t border-gray-200 w-full lg:hidden" />
-          <nav className="flex flex-col lg:flex-row items-start lg:items-center py-2 lg:py-0">
+          <nav className="flex flex-col items-start py-2 lg:flex-row lg:items-center lg:py-0 bg-white lg:bg-gradient-radial from-pink-300 to-pink-200">
             <ul className="text-lg text-black w-full lg:flex lg:flex-row justify-between">
               {/* Navegación */}
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200" >

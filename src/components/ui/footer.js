@@ -11,7 +11,7 @@ const Footer = () => {
             <Image src="/ambarLogo.jpg" alt="Ambar Logo" width={200} height={200} className="mx-auto  object-contain" />
           </Link>
           {/* Use grid layout for better responsiveness */}
-          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center px-4 py-8 bg-gradient-to-r from-pink-300 to-black rounded-lg shadow-lg">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center px-4 py-8 bg-gradient-radial from-pink-300  to-pink-200 rounded-lg shadow-lg">
   <Link href="/" className="text-white hover:text-yellow-300 transition duration-300 ease-in-out font-bold text-lg md:text-xl hover:scale-110 transform">
     Inicio
   </Link>

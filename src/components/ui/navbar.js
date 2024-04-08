@@ -5,7 +5,7 @@ import { AiOutlineMail } from "react-icons/ai";
 
 const Navbar = () => {
   return (
-    <div className='flex bg-gradient-to-br  from-pink-200 to-violet-300 justify-between items-center px-4 py-2'>
+    <div className='flex bg-gradient-radial from-pink-300  to-pink-200 justify-between items-center px-4 py-2'>
 
       {/* Contact Info */}
       <div className='flex items-center space-x-4 text-white'>
