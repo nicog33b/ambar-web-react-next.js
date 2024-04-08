@@ -4,7 +4,7 @@ import ServiceCard from './cardService';
 const ServicesSection = () => {
   return (
     
-    <section id='serviceSection ' className=' bg-gradient-to-r from-pink-300 to-violet-300 '>
+    <section id='serviceSection ' className=' bg-gradient-to-r from-pink-300  to-zinc-800 '>
     <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12 lg:gap-8 px-4 sm:px-6 p-1">
       <ServiceCard
         imageSrc="/services/accesories.jpg"
