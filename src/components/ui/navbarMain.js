@@ -65,19 +65,19 @@ const Navbar = () => {
             <ul className="text-lg text-black w-full lg:flex lg:flex-row justify-between">
               {/* Navegación */}
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200" >
-                <Link href="/" className="text-black hover:text-pink-500 block w-full">INICIO</Link>
+                <Link href="/" className="text-black hover:text-pink-500 block w-full  text-lato">INICIO</Link>
               </li>
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/#serviceSection" className="text-black hover:text-pink-500 block w-full">SERVICIOS</Link>
+                <Link href="/#serviceSection" className="text-black hover:text-pink-500 block w-full  text-lato">SERVICIOS</Link>
               </li>
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/collection" className="text-black hover:text-pink-500 block w-full">COLECCIÓN</Link>
+                <Link href="/collection" className="text-black hover:text-pink-500 block w-full  text-lato">COLECCIÓN</Link>
               </li>
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/contact" className="text-black hover:text-pink-500 block w-full">CONTACTO</Link>
+                <Link href="/contact" className="text-black hover:text-pink-500 block w-full  text-lato">CONTACTO</Link>
               </li>
               <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/contact" className="text-black hover:text-pink-500 block w-full">AGENDAR</Link>
+                <Link href="/contact" className="text-black hover:text-pink-500 block w-full  text-lato" >AGENDAR</Link>
               </li>
             </ul>
             <hr className="my-4 border-t border-gray-200 w-full lg:hidden" />

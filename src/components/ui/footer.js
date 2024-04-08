@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col items-center text-center">
           <Link href="/" passHref>
-            <Image src="/ambarLogo.jpg" alt="Ambar Logo" width={200} height={200} className="mx-auto" objectFit="contain"/>
+            <Image src="/ambarLogo.jpg" alt="Ambar Logo" width={200} height={200} className="mx-auto  object-contain" />
           </Link>
           {/* Use grid layout for better responsiveness */}
           <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center px-4 py-8 bg-gradient-to-r from-pink-300 to-black rounded-lg shadow-lg">

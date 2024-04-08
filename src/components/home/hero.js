@@ -17,9 +17,9 @@ const HeroCarousel = ({ images = ['/hero/6.jpg', '/hero/9.jpg'], intervalDuratio
   return (
     <section className="hero flex justify-center items-center h-[51rem] bg-cover bg-no-repeat transition-opacity duration-1000 ease-in-out" style={{ backgroundImage: `url('${images[heroImageIndex]}')` }}>
       <div className="text-container">
-        <h1 className="title">Encuentra tu vestido.</h1>
+        <h1 className="title font-title">Encuentra tu vestido.</h1>
         <p className="subtitle">Explora nuestra colección y reserva tu vestido.</p>
-        <button className="cta-button">Ver Colección</button>
+        <button className="cta-button text-lato text-2xl">Ver Colección</button>
       </div>
     </section>
   );
