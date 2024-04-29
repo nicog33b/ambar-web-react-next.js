@@ -4,11 +4,11 @@ iframe {
   }
   
   input:focus, textarea:focus {
-    border-color: #ef4444; /* Rojo de Tailwind para el foco */
+    border-color: #dfbcbc; /* Rojo de Tailwind para el foco */
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5); /* Sombra suave para resaltar el foco */
   }
   
   button:hover {
-    background-color: #ec4899; /* Un tono más oscuro para el hover */
+    background-color: #cfa122; /* Un tono más oscuro para el hover */
   }
   

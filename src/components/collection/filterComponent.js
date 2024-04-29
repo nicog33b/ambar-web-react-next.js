@@ -1,10 +1,24 @@
-import {React, useState, useEffect } from 'react';
+'use client'
+import React, {useState, useEffect} from 'react';
 import { FaFilter, FaTimesCircle, FaUndo } from 'react-icons/fa';
 
-const FilterComponent = () => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedSizes, setSelectedSizes] = useState([]);
-  const [selectedColors, setSelectedColors] = useState([]);
+const FilterComponent = ({
+  availableCategories,
+  availableSizes,
+  availableColors,
+  selectedCategories,
+  selectedSizes,
+  selectedColors,
+  setSelectedCategories,
+  setSelectedSizes,
+  setSelectedColors,
+  toggleCategoryFilter,
+  toggleSizeFilter,
+  toggleColorFilter,
+  categoryCounts,
+  sizeCounts,
+  colorCounts
+}) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -13,6 +27,27 @@ const FilterComponent = () => {
         setIsMobileFilterOpen(!isMobileFilterOpen);
       };
     
+      useEffect(() => {
+        const checkMobile = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+    
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
+    
+        return () => window.removeEventListener('resize', checkMobile);
+      }, []);
+
+
+  // Función para manejar la selección/deselección de filtros
+  const handleFilterToggle = (filterType, value) => {
+    const filterActions = {
+      categories: toggleCategoryFilter,
+      sizes: toggleSizeFilter,
+      colors: toggleColorFilter,
+    };
+    filterActions[filterType](value);
+  };
       useEffect(() => {
         const checkMobile = () => {
           setIsMobile(window.innerWidth < 768);
@@ -72,7 +107,7 @@ const FilterComponent = () => {
         <div className="flex justify-between items-center bg-white py-2 px-4 rounded mb-4 shadow">
           <button
             onClick={handleMobileFilterToggle}
-            className="text-pink-500 hover:text-pink-600 transition-colors duration-300"
+            className="text-black hover:text-gray-600 transition-colors duration-300"
             aria-label={isMobileFilterOpen ? 'Cerrar filtro' : 'Abrir filtro'}
           >
             {isMobileFilterOpen ? (

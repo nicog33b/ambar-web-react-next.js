@@ -14,7 +14,6 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
             <li key={number}>
               <a
                 onClick={() => paginate(number)}
-                href="!#"
                 className={`py-2 px-3 leading-tight ${currentPage === number ? 'bg-gray-300' : 'bg-white'} border border-gray-300 text-gray-500 hover:bg-gray-300`}
               >
                 {number}

@@ -1,87 +1,90 @@
 'use client';
-import React, { useState } from 'react';
-import DressCard from '../../components/collection/dressCard';
+import React, { useState, useEffect } from 'react';
+import DressCard from '@/components/collection/dressCard';
 import FilterComponent from '@/components/collection/filterComponent';
 import Pagination from '@/components/collection/pagination';
 
 const RentalsPage = () => {
-  const dresses = [
-    { id: 1, name: 'Vestido 1', image: '/homeModel1.jpg' },
-    { id: 2, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 3, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    { id: 4, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 5, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    { id: 6, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 7, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    { id: 8, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 9, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    { id: 10, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 11, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    { id: 12, name: 'Vestido 2', image: '/homeModel2.jpg' },
-    { id: 13, name: 'Vestido 3', image: '/homeModel1.jpg' },
-    // ... otros vestidos
-  ];
-
-  // Estados para la paginación
+  const [dresses, setDresses] = useState([]);
+  const [filteredDresses, setFilteredDresses] = useState([]); // Usa un estado para almacenar los vestidos filtrados
   const [currentPage, setCurrentPage] = useState(1);
-  const [dressesPerPage] = useState(4);
+  const [dressesPerPage] = useState(12);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
 
-  // Obtén los vestidos actuales que se van a mostrar
+  useEffect(() => {
+    async function fetchDresses() {
+      try {
+        const response = await fetch('http://localhost:3000/dresses_ambar/vestidos');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        setDresses(data);
+        setFilteredDresses(data); // Inicializa los vestidos filtrados con todos los vestidos
+      } catch (error) {
+        console.error('Error fetching dresses:', error);
+      }
+    }
+    fetchDresses();
+  }, []);
+
+  useEffect(() => {
+    const filtered = dresses.filter(dress => {
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(dress.tipo);
+      const sizeMatch = selectedSizes.length === 0 || dress.talles.some(talle => selectedSizes.includes(talle));
+      const colorMatch = selectedColors.length === 0 || selectedColors.includes(dress.color);
+      return categoryMatch && sizeMatch && colorMatch;
+    });
+    setFilteredDresses(filtered);
+    setCurrentPage(1); // Restablece a la primera página al aplicar nuevos filtros
+  }, [dresses, selectedCategories, selectedSizes, selectedColors]);
+
   const indexOfLastDress = currentPage * dressesPerPage;
   const indexOfFirstDress = indexOfLastDress - dressesPerPage;
-  const currentDresses = dresses.slice(indexOfFirstDress, indexOfLastDress);
+  const currentDresses = filteredDresses.slice(indexOfFirstDress, indexOfLastDress);
 
-  // Funciones para cambiar la página
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
-  const prevPage = () => setCurrentPage(prev => prev - 1);
-
-  // Determinar la visibilidad de las flechas
   const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === Math.ceil(dresses.length / dressesPerPage);
+  const isLastPage = currentPage >= Math.ceil(filteredDresses.length / dressesPerPage);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
     <div className="mt-9 mx-3">
       <div className="flex flex-col lg:flex-row">
-        <aside className="lg:w-1/4 mr-4">
-          <FilterComponent />
+        <aside className="lg:w-1/3 mr-4">
+          <FilterComponent
+            availableCategories={Array.from(new Set(dresses.map(dress => dress.tipo)))}
+            availableSizes={Array.from(new Set(dresses.flatMap(dress => dress.talles)))}
+            availableColors={Array.from(new Set(dresses.map(dress => dress.color)))}
+            selectedCategories={selectedCategories}
+            selectedSizes={selectedSizes}
+            selectedColors={selectedColors}
+            setSelectedCategories={setSelectedCategories}
+            setSelectedSizes={setSelectedSizes}
+            setSelectedColors={setSelectedColors}
+            toggleCategoryFilter={category => setSelectedCategories(prev => toggleFilter(prev, category))}
+            toggleSizeFilter={size => setSelectedSizes(prev => toggleFilter(prev, size))}
+            toggleColorFilter={color => setSelectedColors(prev => toggleFilter(prev, color))}
+          />
         </aside>
         <main className="flex-grow">
-          <div className="relative"> {/* Contenedor relativo para las flechas de navegación */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {currentDresses.map((dress) => (
-                <DressCard key={dress.id} dress={dress} />
-              ))}
-            </div>
-            { !isFirstPage && (
-              <button
-                onClick={prevPage}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2" // Ajusta la posición según necesites
-              >
-                {/* Icono de flecha izquierda o texto */}
-                {'<'}
-              </button>
-            )}
-            { !isLastPage && (
-              <button
-                onClick={nextPage}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2" // Ajusta la posición según necesites
-              >
-                {/* Icono de flecha derecha o texto */}
-                {'>'}
-              </button>
-            )}
+          <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            {currentDresses.map(dress => (
+              <DressCard key={dress._id} dress={dress} />
+            ))}
+            {!isFirstPage && <button onClick={() => setCurrentPage(current => current - 1)} className="absolute left-0 top-1/2 transform -translate-y-1/2">{'<'}</button>}
+            {currentPage < Math.ceil(filteredDresses.length / dressesPerPage) && <button onClick={() => setCurrentPage(current => current + 1)} className="absolute right-0 top-1/2 transform -translate-y-1/2">{'>'}</button>}
           </div>
-          <Pagination
-            itemsPerPage={dressesPerPage}
-            totalItems={dresses.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
+          <Pagination itemsPerPage={dressesPerPage} totalItems={filteredDresses.length} paginate={paginate} currentPage={currentPage} />
         </main>
       </div>
     </div>
   );
+};
+
+const toggleFilter = (filters, filter) => {
+  const index = filters.indexOf(filter);
+  return index < 0 ? [...filters, filter] : filters.filter(f => f !== filter);
 };
 
 export default RentalsPage;

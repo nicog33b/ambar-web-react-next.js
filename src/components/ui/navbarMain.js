@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center px-[9%] py-[3%] flex-wrap">
         <Link href="/" passHref>
           <Image
-            src='/ambarLogo2.jpg'
+    src="/ambarLogo.jpg"
             alt="logo"
             width={250}
             height={250}
@@ -62,24 +62,25 @@ const Navbar = () => {
 
           <hr className="my-2 border-t border-gray-200 w-full lg:hidden" />
           <nav className="flex flex-col items-start py-2 lg:flex-row lg:items-center lg:py-0 bg-white lg:bg-gradient-radial from-pink-300 to-pink-200">
-            <ul className="text-lg text-black w-full lg:flex lg:flex-row justify-between">
-              {/* Navegación */}
-              <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200" >
-                <Link href="/" className="text-black hover:text-pink-500 block w-full  text-lato">INICIO</Link>
-              </li>
-              <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/#serviceSection" className="text-black hover:text-pink-500 block w-full  text-lato">SERVICIOS</Link>
-              </li>
-              <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/collection" className="text-black hover:text-pink-500 block w-full  text-lato">COLECCIÓN</Link>
-              </li>
-              <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/contact" className="text-black hover:text-pink-500 block w-full  text-lato">CONTACTO</Link>
-              </li>
-              <li className="px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:text-pink-500 hover:bg-gray-200">
-                <Link href="/contact" className="text-black hover:text-pink-500 block w-full  text-lato" >AGENDAR</Link>
-              </li>
-            </ul>
+          <ul className="text-lg text-black w-full lg:flex lg:flex-row justify-between">
+  {/* Navegación */}
+  <li className="group px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:bg-pink-300">
+    <Link href="/" className="block w-full text-black text-lato group-hover:text-yellow-300">INICIO</Link>
+  </li>
+  <li className="group px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:bg-pink-300">
+    <Link href="/#serviceSection" className="block w-full text-black text-lato group-hover:text-yellow-300">SERVICIOS</Link>
+  </li>
+  <li className="group px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:bg-pink-300">
+    <Link href="/collection" className="block w-full text-black text-lato group-hover:text-yellow-300">COLECCIÓN</Link>
+  </li>
+  <li className="group px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:bg-pink-300">
+    <Link href="/contact" className="block w-full text-black text-lato group-hover:text-yellow-300">CONTACTO</Link>
+  </li>
+  <li className="group px-6 py-4 font-serif cursor-pointer text-xl transition-colors duration-500 hover:bg-pink-300">
+    <Link href="/contact" className="block w-full text-black text-lato group-hover:text-yellow-300">AGENDAR</Link>
+  </li>
+</ul>
+
             <hr className="my-4 border-t border-gray-200 w-full lg:hidden" />
 
             {/* Redes Sociales - En cuadrícula */}
